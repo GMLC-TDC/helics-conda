@@ -1,47 +1,20 @@
-language: python
 matrix:
   include:
-    - os: osx
-      osx_image: xcode6.4
-      language: generic
-      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
-    - os: osx
-      osx_image: xcode6.4
-      language: generic
-      env: PYTHON_VERSION="3.4" PYTHON_ARCH="64"
-    - os: osx
-      osx_image: xcode6.4
-      language: generic
-      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
-    - os: osx
-      osx_image: xcode6.4
-      language: generic
-      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
-    - os: osx
-      osx_image: xcode6.4
-      language: generic
-      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
-    - os: linux
-      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
-    - os: linux
-      env: PYTHON_VERSION="3.4" PYTHON_ARCH="64"
-    - os: linux
-      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
-    - os: linux
-      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
-    - os: linux
-      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
+    - os: windows
+      language: sh
+      env: PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH" PYTHON_VERSION="3.6" PYTHON_ARCH="64"
+      filter_secrets: false
+      before_install:
+          - choco install openssl.light
+          - choco install miniconda3 --params="'/AddToPath:1'"
 
-before_install:
-    - source "conda/conda_setup.sh"
 install:
+    - conda config --set always_yes yes --set changeps1 no --set ssl_verify no --set anaconda_upload yes
     - source "conda/conda_install.sh"
 
 script:
   # Your test script goes here
   - python --version
-
-after_success:
   - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda/conda_upload.sh
 
 notifications:
