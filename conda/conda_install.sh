@@ -2,6 +2,15 @@
 
 set -ev # exit on first error, print each command
 
+if [ ${TRAVIS_OS_NAME} == "osx" ]; then
+    echo ""
+    echo "Removing homebrew from Travis CI to avoid conflicts."
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
+    chmod +x ~/uninstall_homebrew
+    ~/uninstall_homebrew -fq
+    rm ~/uninstall_homebrew
+fi
+
 if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
     export MINICONDA=$HOME/miniconda
 else

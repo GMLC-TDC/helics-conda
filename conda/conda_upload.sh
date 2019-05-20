@@ -1,9 +1,12 @@
+
+set -e
+
 PKG_NAME=helics
 
 if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
-    OS="win-64"
+    OS="win-$PYTHON_ARCH"
 else
-    OS=$TRAVIS_OS_NAME-64
+    OS=$TRAVIS_OS_NAME-$PYTHON_ARCH
 fi
 
 mkdir ~/conda-bld

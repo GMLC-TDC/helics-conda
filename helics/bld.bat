@@ -5,6 +5,7 @@ if %PY3K% equ 1 (
 ) else (
   set BUILD_PYTHON="-DBUILD_PYTHON2_INTERFACE=ON"
   set PYTHON_VERSION="%PY_VER%"
+  set VS90COMNTOOLS=%VS100COMNTOOLS%
 )
 
 mkdir "%SRC_DIR%"\build
