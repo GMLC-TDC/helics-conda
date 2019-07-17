@@ -130,7 +130,7 @@ install:
 script:
   # Your test script goes here
   - python --version
-  - test $TRAVIS_BRANCH = "master" && conda install conda-build && conda install anaconda-client && bash conda/conda_upload.sh
-
+  - conda install conda-build && conda install anaconda-client
+  - test $TRAVIS_BRANCH = "master" && bash conda/conda_upload.sh
 notifications:
     email: false
