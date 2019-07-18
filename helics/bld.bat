@@ -13,9 +13,8 @@ pushd "%SRC_DIR%"\build
 
 set PY_VER_NO_DOT=%PY_VER:.=%
 
-cmake -G "Visual Studio 14 2015" -DCMAKE_BUILD_TYPE=Release -DCOMPILER_CAN_DO_CPP_11=ON -DCXX_FLAGS="-std=c++11" -DBUILD_HELICS_TESTS=OFF -DPYTHON_LIBRARY="%PREFIX%\libs\python%PY_VER_NO_DOT%.lib"  -DPYTHON_INCLUDE_DIR="%PREFIX%\include" -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" %BUILD_PYTHON%" -G "Ninja" ..
-ninja
-ninja install
+cmake -G "Visual Studio 14 2015" -DCMAKE_BUILD_TYPE=Release -DCOMPILER_CAN_DO_CPP_11=ON -DCXX_FLAGS="-std=c++11" -DBUILD_HELICS_TESTS=OFF -DPYTHON_LIBRARY="%PREFIX%\libs\python%PY_VER_NO_DOT%.lib"  -DPYTHON_INCLUDE_DIR="%PREFIX%\include" -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" %BUILD_PYTHON%" ..
+cmake --build . --config Release --target install
 
 move %LIBRARY_PREFIX%\python\_helics.pyd %SP_DIR%
 move %LIBRARY_PREFIX%\python\helics.py %SP_DIR%
