@@ -217,7 +217,7 @@ script:
   - python --version
   - conda install --yes --quiet conda-build && conda install --yes --quiet anaconda-client
   - bash conda/conda_build.sh && echo "Build successful."
-  - if [[ "$TRAVIS_BRANCH" == "master"]]; then bash conda/conda_upload.sh; fi
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then bash conda/conda_upload.sh; fi
 
 notifications:
     email: false
