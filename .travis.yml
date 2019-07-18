@@ -15,9 +15,15 @@ matrix:
                   ~/uninstall_homebrew -fq
                   rm ~/uninstall_homebrew
               fi
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
       osx_image: xcode8.3
@@ -32,9 +38,15 @@ matrix:
                   ~/uninstall_homebrew -fq
                   rm ~/uninstall_homebrew
               fi
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
       osx_image: xcode8.3
@@ -49,9 +61,15 @@ matrix:
                   ~/uninstall_homebrew -fq
                   rm ~/uninstall_homebrew
               fi
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
       osx_image: xcode8.3
@@ -66,37 +84,67 @@ matrix:
                   ~/uninstall_homebrew -fq
                   rm ~/uninstall_homebrew
               fi
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     # - os: windows
       # language: sh
