@@ -7,64 +7,144 @@ matrix:
       language: generic
       env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          # Remove homebrew
+          - |
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
+                  chmod +x ~/uninstall_homebrew
+                  ~/uninstall_homebrew -fq
+                  rm ~/uninstall_homebrew
+              fi
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
       osx_image: xcode8.3
       language: generic
       env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          # Remove homebrew
+          - |
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
+                  chmod +x ~/uninstall_homebrew
+                  ~/uninstall_homebrew -fq
+                  rm ~/uninstall_homebrew
+              fi
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
       osx_image: xcode8.3
       language: generic
       env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          # Remove homebrew
+          - |
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
+                  chmod +x ~/uninstall_homebrew
+                  ~/uninstall_homebrew -fq
+                  rm ~/uninstall_homebrew
+              fi
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
       osx_image: xcode8.3
       language: generic
       env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          # Remove homebrew
+          - |
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
+                  chmod +x ~/uninstall_homebrew
+                  ~/uninstall_homebrew -fq
+                  rm ~/uninstall_homebrew
+              fi
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     - os: linux
       env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
       before_install:
-          - travis_retry wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-          - chmod +x miniconda.sh
-          - ./miniconda.sh -b
+          - |
+              MINICONDA_URL="https://repo.continuum.io/miniconda"
+              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
+              else
+                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+              fi
+              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
+              bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
     # - os: windows
       # language: sh
@@ -126,11 +206,18 @@ matrix:
 install:
     - conda config --set always_yes yes --set changeps1 no --set ssl_verify no --set anaconda_upload no
     - source "conda/conda_install.sh"
+    # Configure MacOSX SDK
+    - |
+        if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+            echo -e "CONDA_BUILD_SYSROOT:\n    - $(xcrun --sdk macosx --show-sdk-path) # [osx]" > $HOME/conda_build_config.yaml
+            cat $HOME/conda_build_config.yaml
+        fi
 
 script:
-  # Your test script goes here
   - python --version
-  - conda install conda-build && conda install anaconda-client
-  - test $TRAVIS_BRANCH = "master" && bash conda/conda_upload.sh
+  - conda install --yes --quiet conda-build && conda install --yes --quiet anaconda-client
+  - travis_wait bash conda/conda_build.sh && echo "Build successful."
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then bash conda/conda_upload.sh; fi
+
 notifications:
     email: false
