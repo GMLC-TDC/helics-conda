@@ -12,4 +12,4 @@ fi
 mkdir ~/conda-bld
 export CONDA_BLD_PATH=~/conda-bld
 echo "Started building ..."
-conda build $PKG_NAME --no-test
+travis_wait conda build $PKG_NAME --no-test
