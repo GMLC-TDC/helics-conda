@@ -14,7 +14,7 @@ fi
 
 hash -r
 conda update -q conda
-conda info -a
+# conda info -a
 
 if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
     source activate base
