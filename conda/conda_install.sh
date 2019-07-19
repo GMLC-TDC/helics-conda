@@ -16,6 +16,10 @@ hash -r
 conda update -q conda
 # conda info -a
 
+if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+    source activate base
+fi
+
 conda create -n helics-build-environment python=$PYTHON_VERSION
 source activate helics-build-environment
 conda list
