@@ -9,7 +9,7 @@ else
     OS=$TRAVIS_OS_NAME-$PYTHON_ARCH
 fi
 
-mkdir ~/conda-bld
+mkdir -p ~/conda-bld
 export CONDA_BLD_PATH=~/conda-bld
 
 echo "Finished building. Uploading ..."
