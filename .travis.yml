@@ -216,6 +216,7 @@ install:
 script:
   - python --version
   - conda install --yes --quiet conda-build && conda install --yes --quiet anaconda-client
+  - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
   - bash conda/conda_build.sh
   - echo "Build successful."
   - if [[ "$TRAVIS_BRANCH" == "master" ]]; then bash conda/conda_upload.sh; fi
