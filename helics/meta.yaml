@@ -22,16 +22,16 @@ requirements:
     - swig
     - ninja
     - boost-cpp
-    - zeromq 4.2.5
+    - zeromq 4.2.5 # [not win]
     - python
   host:
     - python
     - boost-cpp
-    - zeromq 4.2.5
+    - zeromq 4.2.5 # [not win]
   run:
     - python
     - boost-cpp
-    - zeromq 4.2.5
+    - zeromq 4.2.5 # [not win]
 
 test:
   imports:
