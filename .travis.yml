@@ -146,13 +146,13 @@ matrix:
               curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
               bash $MINICONDA_FILE -b
           - export PATH=/home/travis/miniconda3/bin:$PATH
-    # - os: windows
-      # language: sh
-      # env: PYTHON_VERSION="2.7" PYTHON_ARCH="32" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
-      # filter_secrets: false
-      # before_install:
-          # - choco install openssl.light --forcex86
-          # - choco install miniconda3 --params="'/AddToPath:1'" --forcex86
+    - os: windows
+      language: sh
+      env: PYTHON_VERSION="2.7" PYTHON_ARCH="32" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
+      filter_secrets: false
+      before_install:
+          - choco install openssl.light --forcex86
+          - choco install miniconda3 --params="'/AddToPath:1'" --forcex86
     - os: windows
       language: sh
       env: PYTHON_VERSION="3.5" PYTHON_ARCH="32" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
@@ -174,13 +174,13 @@ matrix:
       before_install:
           - choco install openssl.light --forcex86
           - choco install miniconda3 --params="'/AddToPath:1'" --forcex86
-    # - os: windows
-      # language: sh
-      # env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
-      # filter_secrets: false
-      # before_install:
-          # - choco install openssl.light
-          # - choco install miniconda3 --params="'/AddToPath:1'"
+    - os: windows
+      language: sh
+      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
+      filter_secrets: false
+      before_install:
+          - choco install openssl.light
+          - choco install miniconda3 --params="'/AddToPath:1'"
     - os: windows
       language: sh
       env: PYTHON_VERSION="3.5" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
@@ -202,6 +202,11 @@ matrix:
       before_install:
           - choco install openssl.light
           - choco install miniconda3 --params="'/AddToPath:1'"
+  allow_failures:
+    - os: windows
+      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
+    - os: windows
+      env: PYTHON_VERSION="2.7" PYTHON_ARCH="32" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
 
 install:
     - conda config --set always_yes yes --set changeps1 no --set ssl_verify no --set anaconda_upload no
