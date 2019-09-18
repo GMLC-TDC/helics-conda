@@ -219,7 +219,7 @@ install:
         fi
 
 script:
-  - conda install --yes --quiet conda-build && conda install --yes --quiet anaconda-client
+  - conda install --yes --quiet conda-build conda-verify && conda install --yes --quiet anaconda-client
   - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
   - bash conda/conda_build.sh
   - kill %1
