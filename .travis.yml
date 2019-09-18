@@ -224,7 +224,6 @@ script:
   - bash conda/conda_build.sh
   - kill %1
   - echo "Build successful."
-  - bash conda/conda_test.sh
   - if [ "$TRAVIS_BRANCH" = "master" ]; then bash conda/conda_upload.sh; fi
 
 notifications:
