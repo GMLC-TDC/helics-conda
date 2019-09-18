@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -ev # exit on first error, print each command
+set -e # exit on first error
 
 source activate helics-build-environment
 
