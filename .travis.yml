@@ -219,13 +219,14 @@ install:
         fi
 
 script:
-  - python --version
-  - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
   - conda install --yes --quiet conda-build && conda install --yes --quiet anaconda-client
   - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
   - bash conda/conda_build.sh
   - kill %1
   - echo "Build successful."
+  - python --version
+  - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
+  - "python -c \"import helics as h; h.helicsGetVersion()\""
   - if [ "$TRAVIS_BRANCH" = "master" ]; then bash conda/conda_upload.sh; fi
 
 notifications:
