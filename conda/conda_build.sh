@@ -20,8 +20,3 @@ ls $CONDA_BLD_PATH
 PACKAGE_PATH=$PACKAGE_DIR
 echo $PACKAGE_PATH
 
-conda install $PACKAGE_PATH
-
-python -c "import helics as h; h.helicsGetVersion()"
-print -c "print(\"Imported helics successfully\")"
-
