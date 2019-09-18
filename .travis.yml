@@ -224,6 +224,7 @@ script:
   - bash conda/conda_build.sh
   - kill %1
   - echo "Build successful."
+  - source activate helics-build-environment
   - python --version
   - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
   - "python -c \"import helics as h; h.helicsGetVersion()\""
