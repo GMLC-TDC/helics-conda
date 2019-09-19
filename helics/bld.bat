@@ -15,10 +15,10 @@ set PY_VER_NO_DOT=%PY_VER:.=%
 
 if %PYTHON_ARCH% equ 64 (
   echo "Building 64 bit"
-  cmake -DZMQ_LOCAL_BUILD=ON -DCMAKE_BUILD_TYPE=Release -A x64 -DCOMPILER_CAN_DO_CPP_11=ON -DCXX_FLAGS="-std=c++11" -DBUILD_HELICS_TESTS=OFF -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")  -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" %BUILD_PYTHON%" ..
+  cmake -DZMQ_LOCAL_BUILD=ON -DCMAKE_BUILD_TYPE=Release -A x64 -DCOMPILER_CAN_DO_CPP_11=ON -DCXX_FLAGS="-std=c++11" -DBUILD_HELICS_TESTS=OFF -DPython_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")  -DpythoN_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")  -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" %BUILD_PYTHON%" ..
 ) else (
   echo "Building 32 bit"
-  cmake -DZMQ_LOCAL_BUILD=ON -DCMAKE_BUILD_TYPE=Release -DCOMPILER_CAN_DO_CPP_11=ON -DCXX_FLAGS="-std=c++11" -DBUILD_HELICS_TESTS=OFF -DPYTHON_LIBRARY="%PREFIX%\libs\python%PY_VER_NO_DOT%.lib" -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")  -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" %BUILD_PYTHON%" ..
+  cmake -DZMQ_LOCAL_BUILD=ON -DCMAKE_BUILD_TYPE=Release -DCOMPILER_CAN_DO_CPP_11=ON -DCXX_FLAGS="-std=c++11" -DBUILD_HELICS_TESTS=OFF -DPython_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")  -DPython_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())")  -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" %BUILD_PYTHON%" ..
 )
 cmake --build . --config Release --target install
 
