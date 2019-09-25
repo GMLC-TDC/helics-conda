@@ -11,6 +11,8 @@ if %PY3K% equ 1 (
 mkdir "%SRC_DIR%"\build
 pushd "%SRC_DIR%"\build
 
+git clean -fxd
+
 set PY_VER_NO_DOT=%PY_VER:.=%
 
 if %PYTHON_ARCH% equ 64 (

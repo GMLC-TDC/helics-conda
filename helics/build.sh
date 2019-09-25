@@ -17,6 +17,7 @@ else
 fi
 
 mkdir -p build && cd build
+git clean -fxd
 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_HELICS_TESTS=OFF -DCMAKE_CXX_FLAGS=$FLAGS ${BUILD_PYTHON} -DCMAKE_INSTALL_PREFIX=$PREFIX ../
 make
 make install
