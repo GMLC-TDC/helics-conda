@@ -3,7 +3,7 @@ language: python
 matrix:
   include:
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode9.4
       language: generic
       env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
       before_install:
@@ -26,7 +26,7 @@ matrix:
               bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode9.4
       language: generic
       env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
       before_install:
@@ -49,7 +49,7 @@ matrix:
               bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode9.4
       language: generic
       env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
       before_install:
@@ -72,7 +72,7 @@ matrix:
               bash $MINICONDA_FILE -b
           - export PATH=/Users/travis/miniconda3/bin:$PATH
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode9.4
       language: generic
       env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
       before_install:
