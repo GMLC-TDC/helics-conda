@@ -24,7 +24,6 @@ if %PYTHON_ARCH% equ 64 (
 )
 cmake --build . --config Release --target install
 
-move %LIBRARY_PREFIX%\python\_helics.pyd %SP_DIR%
-move %LIBRARY_PREFIX%\python\helics.py %SP_DIR%
+move %LIBRARY_PREFIX%\python\* %SP_DIR%
 
 popd

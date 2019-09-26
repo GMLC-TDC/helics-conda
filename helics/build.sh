@@ -22,5 +22,4 @@ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_HELICS_TESTS=OFF -DCMAKE_CXX_FLAGS=$FLA
 make
 make install
 
-cp -v ${PREFIX}/python/_helics.so ${SP_DIR}/
-cp -v ${PREFIX}/python/helics.py ${SP_DIR}/
+cp -v ${PREFIX}/python/* ${SP_DIR}/
