@@ -3,9 +3,9 @@
 set -e
 set -x
 
-
 if [ `uname` = "Darwin" ]; then
 	FLAGS="-std=c++14"
+    export CXX=g++ CC=gcc
 else
 	FLAGS="-std=c++11"
 fi
