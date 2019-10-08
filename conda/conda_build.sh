@@ -12,7 +12,7 @@ fi
 mkdir -p ~/conda-bld
 export CONDA_BLD_PATH=~/conda-bld
 echo "Started building ..."
-conda build $PKG_NAME
+conda build $PKG_NAME --python=$PYTHON_VERSION
 
 PACKAGE_DIR=$(conda build $PKG_NAME --output)
 ls `dirname $PACKAGE_DIR`
