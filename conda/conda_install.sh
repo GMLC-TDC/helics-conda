@@ -20,7 +20,7 @@ if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
     source activate base
 fi
 
-conda create -n helics-build-environment python=$PYTHON_VERSION
+conda create -n helics-build-environment python=3.7
 source activate helics-build-environment
 conda list
 
