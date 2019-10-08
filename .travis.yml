@@ -2,193 +2,102 @@ language: python
 
 matrix:
   include:
+    - os: windows
+      language: sh
+      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH" CONDA_PYTHON=3.6
+      filter_secrets: false
+    - os: windows
+      language: sh
+      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH" CONDA_PYTHON=3.6
+      filter_secrets: false
+    - os: windows
+      language: sh
+      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH" CONDA_PYTHON=3.6
+      filter_secrets: false
+    - os: windows
+      language: sh
+      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH" CONDA_PYTHON=3.6
+      filter_secrets: false
     - os: osx
       osx_image: xcode9.4
       language: generic
-      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
-      before_install:
-          # Remove homebrew
-          - |
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
-                  chmod +x ~/uninstall_homebrew
-                  ~/uninstall_homebrew -fq
-                  rm ~/uninstall_homebrew
-              fi
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/Users/travis/miniconda3/bin:$PATH
+      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" CONDA_PYTHON=3.6
     - os: osx
       osx_image: xcode9.4
       language: generic
-      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
-      before_install:
-          # Remove homebrew
-          - |
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
-                  chmod +x ~/uninstall_homebrew
-                  ~/uninstall_homebrew -fq
-                  rm ~/uninstall_homebrew
-              fi
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/Users/travis/miniconda3/bin:$PATH
+      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64" CONDA_PYTHON=3.6
     - os: osx
       osx_image: xcode9.4
       language: generic
-      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
-      before_install:
-          # Remove homebrew
-          - |
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
-                  chmod +x ~/uninstall_homebrew
-                  ~/uninstall_homebrew -fq
-                  rm ~/uninstall_homebrew
-              fi
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/Users/travis/miniconda3/bin:$PATH
+      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64" CONDA_PYTHON=3.6
     - os: osx
       osx_image: xcode9.4
       language: generic
-      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
-      before_install:
-          # Remove homebrew
-          - |
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew
-                  chmod +x ~/uninstall_homebrew
-                  ~/uninstall_homebrew -fq
-                  rm ~/uninstall_homebrew
-              fi
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/Users/travis/miniconda3/bin:$PATH
+      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64" CONDA_PYTHON=3.6
     - os: linux
-      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64"
-      before_install:
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/home/travis/miniconda3/bin:$PATH
+      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" CONDA_PYTHON=3.6
     - os: linux
-      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64"
-      before_install:
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/home/travis/miniconda3/bin:$PATH
+      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64" CONDA_PYTHON=3.6
     - os: linux
-      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64"
-      before_install:
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/home/travis/miniconda3/bin:$PATH
+      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64" CONDA_PYTHON=3.6
     - os: linux
-      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64"
-      before_install:
-          - |
-              MINICONDA_URL="https://repo.continuum.io/miniconda"
-              if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-                  MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh"
-              else
-                  MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
-              fi
-              curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
-              bash $MINICONDA_FILE -b
-          - export PATH=/home/travis/miniconda3/bin:$PATH
-    - os: windows
-      language: sh
-      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
-      filter_secrets: false
-      before_install:
-          - choco install openssl.light
-          - choco install miniconda3 --params="'/AddToPath:1'"
-    - os: windows
-      language: sh
-      env: PYTHON_VERSION="3.5" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
-      filter_secrets: false
-      before_install:
-          - choco install openssl.light
-          - choco install miniconda3 --params="'/AddToPath:1'"
-    - os: windows
-      language: sh
-      env: PYTHON_VERSION="3.6" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
-      filter_secrets: false
-      before_install:
-          - choco install openssl.light
-          - choco install miniconda3 --params="'/AddToPath:1'"
-    - os: windows
-      language: sh
-      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
-      filter_secrets: false
-      before_install:
-          - choco install openssl.light
-          - choco install miniconda3 --params="'/AddToPath:1'"
-  allow_failures:
-    - os: windows
-      env: PYTHON_VERSION="2.7" PYTHON_ARCH="64" PATH="/c/tools/miniconda3/:/c/tools/miniconda3/Scripts:/c/tools/miniconda3/bin:/c/tools/miniconda3/envs/testenv/Lib/site-packages/rdkit:$PATH"
+      env: PYTHON_VERSION="3.7" PYTHON_ARCH="64" CONDA_PYTHON=3.6
+
+before_install:
+  # set conda path info
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall > ~/uninstall_homebrew;
+        chmod +x ~/uninstall_homebrew;
+        ~/uninstall_homebrew -fq;
+        rm ~/uninstall_homebrew;
+    fi
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      MINICONDA_PATH=$HOME/miniconda;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/bin;
+    elif [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      MINICONDA_PATH=/c/tools/miniconda3/;
+      MINICONDA_PATH_WIN=`cygpath --windows $MINICONDA_PATH`;
+      MINICONDA_SUB_PATH=$MINICONDA_PATH/Scripts;
+    fi;
+  # obtain miniconda installer
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        MINICONDA_URL="https://repo.continuum.io/miniconda";
+        MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh";
+        curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}";
+    elif  [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        MINICONDA_URL="https://repo.continuum.io/miniconda";
+        MINICONDA_FILE="Miniconda3-latest-MacOSX-x86_64.sh";
+        curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}";
+    fi;
 
 install:
-    - conda config --set always_yes yes --set changeps1 no --set ssl_verify no --set anaconda_upload no
-    - source "conda/conda_install.sh"
-    # Configure MacOSX SDK
-    - |
-        if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-            echo -e "CONDA_BUILD_SYSROOT:\n    - $(xcrun --sdk macosx --show-sdk-path) # [osx]" > $HOME/conda_build_config.yaml
-            cat $HOME/conda_build_config.yaml
-        fi
+  # install miniconda
+  # pip and conda will also need OpenSSL for Windows
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then
+      bash $MINICONDA_FILE -b -p $MINICONDA_PATH;
+    elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
+      choco install openssl.light;
+      choco install miniconda3 --params="'/AddToPath:1 /D:$MINICONDA_PATH_WIN'";
+      export VS90COMNTOOLS=$VS140COMNTOOLS;
+    fi;
+  - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
+  # for conda version 4.4 or later
+  - source $MINICONDA_PATH/etc/profile.d/conda.sh;
+  - hash -r
+  - conda activate base
+  - conda config --set always_yes yes --set changeps1 no --set ssl_verify no --set anaconda_upload no
+  - conda update -q conda;
+  - echo "Python $CONDA_PYTHON running on $TRAVIS_OS_NAME";
+  # Configure MacOSX SDK
+  - |
+      if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+          echo -e "CONDA_BUILD_SYSROOT:\n    - $(xcrun --sdk macosx --show-sdk-path) # [osx]" > $HOME/conda_build_config.yaml
+          cat $HOME/conda_build_config.yaml
+      fi
 
 script:
+  - conda create --name test-environment python=$CONDA_PYTHON
+  - conda activate test-environment;
   - conda install --yes --quiet conda-build conda-verify && conda install --yes --quiet anaconda-client
   - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
   - bash conda/conda_build.sh
