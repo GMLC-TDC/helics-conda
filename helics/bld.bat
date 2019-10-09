@@ -5,13 +5,14 @@ git clean -fxd
 
 set PY_VER_NO_DOT=%PY_VER:.=%
 
-set HELICS_PYTHON_PREFIX=%BUILD_PREFIX%\python.exe
-
-echo "PREFIX:"
-echo %HELICS_PYTHON_PREFIX%
+where python > tempFile
+set /p HELICS_PYTHON_PREFIX= < tempFile
+del tempFile
 
 echo "Python location:"
-where python
+echo %HELICS_PYTHON_PREFIX%
+
+echo "Setting build options"
 
 if "%PYTHON_VERSION%" == "2.7" (
     set BUILD_PYTHON=-DBUILD_PYTHON2_INTERFACE=ON
