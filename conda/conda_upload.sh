@@ -12,6 +12,6 @@ fi
 export CONDA_BLD_PATH=~/conda-bld
 
 echo "Finished building. Uploading ..."
-anaconda -t $ANACONDA_TOKEN upload $CONDA_BLD_PATH/$OS/$PKG_NAME-*.tar.bz2 --force
+anaconda -t $ANACONDA_TOKEN upload $CONDA_BLD_PATH/$OS/$PKG_NAME-*.tar.bz2
 echo "Finished uploading."
 
