@@ -13,14 +13,11 @@ python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_v
 set /p HELICS_PYTHON_LIBRARY= < tempFile
 del tempFile
 
-where python > tempFile
-set /p HELICS_PYTHON_EXECUTABLE= < tempFile
+python-config --prefix > tempFile
+set /p HELICS_PYTHON_PREFIX= < tempFile
 del tempFile
 
-python -c "import distutils.sysconfig as sysconfig; print(sysconfig.PREFIX)" > tempFile
-set /p HELICS_PYTHON_ROOT_DIR= < tempFile
-del tempFile
-
+echo %HELICS_PYTHON_PREFIX%
 echo %HELICS_PYTHON_INCLUDE_DIR%
 echo %HELICS_PYTHON_LIBRARY%
 echo %HELICS_PYTHON_EXECUTABLE%
@@ -29,11 +26,19 @@ echo %HELICS_PYTHON_ROOT_DIR%
 
 if "%PYTHON_VERSION%" == "2.7" (
     set BUILD_PYTHON=-DBUILD_PYTHON2_INTERFACE=ON
+    set HELICS_PYTHON_LIBRARIES=%HELICS_PYTHON_PREFIX%\Libs
+    set HELICS_PYTHON_EXECUTABLE=%HELICS_PYTHON_PREFIX%\python.exe
+    set HELICS_PYTHON_INCLUDE_DIRS=%HELICS_PYTHON_PREFIX%\include
 ) ELSE (
     set BUILD_PYTHON=-DBUILD_PYTHON_INTERFACE=ON
+    set HELICS_PYTHON_EXECUTABLE=%HELICS_PYTHON_PREFIX%\python.exe
+    set HELICS_PYTHON_INCLUDE_DIRS=%HELICS_PYTHON_PREFIX%\include
+    set HELICS_PYTHON_LIBRARIES=%HELICS_PYTHON_PREFIX%\Libs
 )
 
 echo "Building 64 bit"
+
+set BUILD_PYTHON=%BUILD_PYTHON% -DPYTHON_EXECUTABLE=%HELICS_PYTHON_EXECUTABLE% -DPYTHON_INCLUDE_DIRS=%HELICS_PYTHON_INCLUDE_DIRS% -DPYTHON_LIBRARIES=%HELICS_PYTHON_LIBRARIES%
 
 echo %BUILD_PYTHON%
 
