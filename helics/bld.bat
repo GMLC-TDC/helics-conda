@@ -9,8 +9,9 @@ where python > tempFile
 set /p HELICS_PYTHON_PREFIX= < tempFile
 del tempFile
 
-
-set HELICS_PYTHON_PREFIX=%~dp$HELICS_PYTHON_PREFIX:1
+python -c "import os, sys; print(os.path.dirname(sys.argv[1]))" %HELICS_PYTHON_PREFIX% > tempFile
+set /p HELICS_PYTHON_PREFIX= < tempFile
+del tempFile
 
 echo "Python location:"
 echo %HELICS_PYTHON_PREFIX%
