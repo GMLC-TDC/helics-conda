@@ -17,12 +17,11 @@ python-config --prefix > tempFile
 set /p HELICS_PYTHON_PREFIX= < tempFile
 del tempFile
 
+echo "PREFIX:"
 echo %HELICS_PYTHON_PREFIX%
-echo %HELICS_PYTHON_INCLUDE_DIR%
-echo %HELICS_PYTHON_LIBRARY%
-echo %HELICS_PYTHON_EXECUTABLE%
-echo %HELICS_PYTHON_ROOT_DIR%
 
+echo "Python location:"
+where python
 
 if "%PYTHON_VERSION%" == "2.7" (
     set BUILD_PYTHON=-DBUILD_PYTHON2_INTERFACE=ON
