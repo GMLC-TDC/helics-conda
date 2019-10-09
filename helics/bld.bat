@@ -9,6 +9,9 @@ where python > tempFile
 set /p HELICS_PYTHON_PREFIX= < tempFile
 del tempFile
 
+
+set HELICS_PYTHON_PREFIX=%~dp$HELICS_PYTHON_PREFIX:1
+
 echo "Python location:"
 echo %HELICS_PYTHON_PREFIX%
 
