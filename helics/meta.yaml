@@ -1,5 +1,5 @@
 {% set name = "helics" %}
-{% set version = "2.2.1" %}
+{% set version = "2.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +10,7 @@ source:
   git_rev: v{{ version }}
 
 build:
-  number: 0
+  number: 1
   script_env:
       - CONDA_BLD_PATH
 
