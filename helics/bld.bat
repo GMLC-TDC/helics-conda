@@ -5,17 +5,7 @@ git clean -fxd
 
 set PY_VER_NO_DOT=%PY_VER:.=%
 
-python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())" > tempFile
-set /p HELICS_PYTHON_INCLUDE_DIR= < tempFile
-del tempFile
-
-python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))" > tempFile
-set /p HELICS_PYTHON_LIBRARY= < tempFile
-del tempFile
-
-python-config --prefix > tempFile
-set /p HELICS_PYTHON_PREFIX= < tempFile
-del tempFile
+set HELICS_PYTHON_PREFIX=%BUILD_PREFIX%\python.exe
 
 echo "PREFIX:"
 echo %HELICS_PYTHON_PREFIX%
