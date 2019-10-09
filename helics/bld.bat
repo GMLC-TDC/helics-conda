@@ -31,6 +31,7 @@ if "%PYTHON_VERSION%" == "2.7" (
 )
 
 if %PYTHON_ARCH% == "32" (
+    set CONDA_FORCE_32BIT=1
     set HELICS_PLATFORM=Win32
 ) ELSE (
     set HELICS_PLATFORM=Win32
