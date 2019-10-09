@@ -96,7 +96,7 @@ install:
       fi
 
 script:
-  - conda create --name test-environment python=$CONDA_PYTHON
+  - conda create --name test-environment python=$PYTHON_VERSION
   - conda activate test-environment;
   - conda install --yes --quiet conda-build conda-verify && conda install --yes --quiet anaconda-client
   - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
