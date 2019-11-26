@@ -135,7 +135,7 @@ install:
       bash $MINICONDA_FILE -b -p $MINICONDA_PATH;
     elif  [[ "$TRAVIS_OS_NAME" == "windows" ]]; then
       choco install openssl.light;
-      choco install miniconda3 --params="'/AddToPath:1 /D:$MINICONDA_PATH_WIN'" $MINICONDAX64ORX86;
+      choco install miniconda3 --ignore-checksums --params="'/AddToPath:1 /D:$MINICONDA_PATH_WIN'" $MINICONDAX64ORX86;
       export VS90COMNTOOLS=$VS140COMNTOOLS;
     fi;
   - export PATH="$MINICONDA_PATH:$MINICONDA_SUB_PATH:$PATH";
