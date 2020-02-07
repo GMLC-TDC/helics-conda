@@ -5,10 +5,6 @@ package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
-source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: c1c9f28402866acf7fc9f075cbae6e0519d9c7867a8a3e71f7cd3c2575169be7
-
 build:
   number: 0
   script: "{{ PYTHON }} -m pip install helics -vv"
