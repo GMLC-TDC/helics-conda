@@ -22,10 +22,27 @@ jobs:
 
     - name: Build conda package
       shell: bash -l {0}
+      env:
+        CONDA_BLD_PATH: ~/conda-bld
       run: |
         conda install --yes --quiet conda-build conda-verify
         conda install --yes --quiet anaconda-client
+        # conda config --set anaconda_upload yes
         conda-build --python=3.7 .
         conda-build --python=3.6 .
-        conda-build --python=3.5 .
+        # conda-build --python=3.5 .
         conda-build --python=2.7 .
+
+    - name: Upload conda package
+      shell: bash -l {0}
+      env:
+        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run: |
+        ls -la $HOME/conda-bld
+        for condapkg in $HOME/conda-bld/*; do
+          echo $condapkg
+          for file in $condapkg/*.tar.bz2; do
+            echo $file
+            anaconda upload $file
+          done
+        done
