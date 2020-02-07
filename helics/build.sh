@@ -2,6 +2,8 @@
 
 which pip
 which python
+pip --version
+python --version
 pip install pip --upgrade
 
 python-config --extension-suffix
