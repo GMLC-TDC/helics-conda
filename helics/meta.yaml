@@ -14,11 +14,24 @@ build:
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake >=3.4.0
+    - swig
+    - ninja
+    - boost-cpp
+    - zeromq 4.2.5 # [not win]
+    - pip
+    - python
   host:
     - pip
     - python
+    - boost-cpp
+    - zeromq 4.2.5 # [not win]
   run:
     - python
+    - zeromq 4.2.5 # [not win]
 
 test:
   imports:
