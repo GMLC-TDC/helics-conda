@@ -38,7 +38,7 @@ jobs:
       env:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
-        anaconda upload $(conda-build --python=2.7 . --output)
+        anaconda upload -t $BINSTAR_TOKEN $(conda-build --python=2.7 . --output)
         # anaconda upload $(conda-build --python=3.5 . --output)
-        anaconda upload $(conda-build --python=3.6 . --output)
-        anaconda upload $(conda-build --python=3.7 . --output)
+        anaconda upload -t $BINSTAR_TOKEN $(conda-build --python=3.6 . --output)
+        anaconda upload -t $BINSTAR_TOKEN $(conda-build --python=3.7 . --output)
