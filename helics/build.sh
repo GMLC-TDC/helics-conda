@@ -1,7 +1,5 @@
 #!/bin/bash
 
-conda upgrade pip
-
 if [ `uname` == Darwin ]; then
     if [ "$PY_VER" == "2.7" ]; then
         WHL_FILE=https://pypi.org/packages/cp27/h/helics/helics-${PKG_VERSION}-cp27-cp27m-macosx_10_9_intel.whl
