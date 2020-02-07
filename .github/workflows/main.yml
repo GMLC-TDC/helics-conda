@@ -36,6 +36,8 @@ jobs:
       env:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
+        CONDA_BLD_PATH=$HOME/conda-bld
+        export CONDA_BLD_PATH
         anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=2.7 . --output)
         anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.6 . --output)
         anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.7 . --output)
