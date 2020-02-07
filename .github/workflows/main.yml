@@ -22,9 +22,9 @@ jobs:
 
     - name: Build conda package
       shell: bash -l {0}
-      env:
-        CONDA_BLD_PATH: ~/conda-bld
       run: |
+        CONDA_BLD_PATH=$HOME/conda-bld
+        export CONDA_BLD_PATH
         conda install --yes --quiet conda-build conda-verify
         conda install --yes --quiet anaconda-client
         # conda config --set anaconda_upload yes
