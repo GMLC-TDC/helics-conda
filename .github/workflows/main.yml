@@ -38,6 +38,9 @@ jobs:
       env:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
+        echo $HOME
+        ls -la /home/runner
+        ls -la $HOME
         ls -la $HOME/conda-bld
         for condapkg in $HOME/conda-bld/*; do
           echo $condapkg
