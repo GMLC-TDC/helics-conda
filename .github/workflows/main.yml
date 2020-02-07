@@ -27,10 +27,8 @@ jobs:
         export CONDA_BLD_PATH
         conda install --yes --quiet conda-build conda-verify
         conda install --yes --quiet anaconda-client
-        # conda config --set anaconda_upload yes
         conda-build --python=3.7 .
         conda-build --python=3.6 .
-        # conda-build --python=3.5 .
         conda-build --python=2.7 .
 
     - name: Upload conda package
@@ -38,7 +36,6 @@ jobs:
       env:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
-        anaconda upload -t $BINSTAR_TOKEN -u gmlc-tdc $(conda-build --python=2.7 . --output)
-        # anaconda upload -t $BINSTAR_TOKEN -u gmlc-tdc $(conda-build --python=3.5 . --output)
-        anaconda upload -t $BINSTAR_TOKEN -u gmlc-tdc $(conda-build --python=3.6 . --output)
-        anaconda upload -t $BINSTAR_TOKEN -u gmlc-tdc $(conda-build --python=3.7 . --output)
+        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=2.7 . --output)
+        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.6 . --output)
+        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.7 . --output)
