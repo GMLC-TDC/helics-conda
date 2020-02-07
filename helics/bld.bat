@@ -1,5 +1,5 @@
 IF "%PY_VER%"=="2.7" (
-	%PYTHON% -m pip install --no-deps https://pypi.org/packages/cp27/h/helics/helics-%PKG_VERSION%-cp27-cp27mu-win_amd64.whl
+	%PYTHON% -m pip install --no-deps https://pypi.org/packages/cp27/h/helics/helics-%PKG_VERSION%-cp27-cp27m-win_amd64.whl
 )
 
 IF "%PY_VER%"=="3.5" (

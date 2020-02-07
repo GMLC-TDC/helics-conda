@@ -3,7 +3,7 @@
 
 if [ `uname` == Darwin ]; then
     if [ "$PY_VER" == "2.7" ]; then
-        WHL_FILE=https://pypi.org/packages/cp27/h/helics/helics-${PKG_VERSION}-cp27-cp27mu-macosx_10_9_intel.whl
+        WHL_FILE=https://pypi.org/packages/cp27/h/helics/helics-${PKG_VERSION}-cp27-cp27m-macosx_10_9_intel.whl
     elif [ "$PY_VER" == "3.5" ]; then
         WHL_FILE=https://pypi.org/packages/cp35/h/helics/helics-${PKG_VERSION}-cp35-cp35m-macosx_10_9_intel.whl
     elif [ "$PY_VER" == "3.6" ]; then
@@ -15,7 +15,7 @@ fi
 
 if [ `uname` == Linux ]; then
     if [ "$PY_VER" == "2.7" ]; then
-        WHL_FILE=https://pypi.org/packages/cp27/h/helics/helics-${PKG_VERSION}-cp27-cp27mu-manylinux2010_x86_64.whl
+        WHL_FILE=https://pypi.org/packages/cp27/h/helics/helics-${PKG_VERSION}-cp27-cp27m-manylinux2010_x86_64.whl
     elif [ "$PY_VER" == "3.5" ]; then
         WHL_FILE=https://pypi.org/packages/cp35/h/helics/helics-${PKG_VERSION}-cp35-cp35m-manylinux2010_x86_64.whl
     elif [ "$PY_VER" == "3.6" ]; then
