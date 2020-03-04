@@ -1,0 +1,14 @@
+name: HELICS Version Update
+
+on: [repository_dispatch]
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'helics-version-update'
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update HELICS version to ${{ github.event.client_payload.version }}
+      run: sed -i '' "s/{% set version = \".*\" %}/{% set version = \"${{ github.event.client_payload.version }}\" %}/" "helics/meta.yml"
+    - name: Commit updated version
+      run: git diff
