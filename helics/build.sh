@@ -1,25 +1,27 @@
 #!/bin/bash
 
-set -e
-set -x
-
-if [ `uname` = "Darwin" ]; then
-	FLAGS="-std=c++14"
-    export CXX=g++ CC=gcc
-else
-	FLAGS="-std=c++11"
+if [ `uname` == Darwin ]; then
+    if [ "$PY_VER" == "2.7" ]; then
+        WHL_FILE=https://pypi.org/packages/cp27/h/helics/helics-${PKG_VERSION}-cp27-cp27m-macosx_10_9_intel.whl
+    elif [ "$PY_VER" == "3.5" ]; then
+        WHL_FILE=https://pypi.org/packages/cp35/h/helics/helics-${PKG_VERSION}-cp35-cp35m-macosx_10_9_intel.whl
+    elif [ "$PY_VER" == "3.6" ]; then
+        WHL_FILE=https://pypi.org/packages/cp36/h/helics/helics-${PKG_VERSION}-cp36-cp36m-macosx_10_9_intel.whl
+    elif [ "$PY_VER" == "3.7" ]; then
+        WHL_FILE=https://pypi.org/packages/cp37/h/helics/helics-${PKG_VERSION}-cp37-cp37m-macosx_10_9_intel.whl
+    fi
 fi
 
-if [[ $PY3K -eq 1 || $PY3K == True || $PY3K == "True" ]]; then
-  BUILD_PYTHON="-DBUILD_PYTHON_INTERFACE=ON"
-else
-  BUILD_PYTHON="-DBUILD_PYTHON2_INTERFACE=ON"
+if [ `uname` == Linux ]; then
+    if [ "$PY_VER" == "2.7" ]; then
+        WHL_FILE=https://pypi.org/packages/cp27/h/helics/helics-${PKG_VERSION}-cp27-cp27mu-manylinux2010_x86_64.whl
+    elif [ "$PY_VER" == "3.5" ]; then
+        WHL_FILE=https://pypi.org/packages/cp35/h/helics/helics-${PKG_VERSION}-cp35-cp35m-manylinux2010_x86_64.whl
+    elif [ "$PY_VER" == "3.6" ]; then
+        WHL_FILE=https://pypi.org/packages/cp36/h/helics/helics-${PKG_VERSION}-cp36-cp36m-manylinux2010_x86_64.whl
+    elif [ "$PY_VER" == "3.7" ]; then
+        WHL_FILE=https://pypi.org/packages/cp37/h/helics/helics-${PKG_VERSION}-cp37-cp37m-manylinux2010_x86_64.whl
+    fi
 fi
 
-mkdir -p build && cd build
-git clean -fxd
-cmake -DCMAKE_BUILD_TYPE=Release -DHELICS_ENABLE_SWIG=ON -DHELICS_BUILD_TESTS=OFF -DCMAKE_CXX_FLAGS=$FLAGS ${BUILD_PYTHON} -DCMAKE_INSTALL_PREFIX=$PREFIX -DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") -DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") -DPYTHON_EXECUTABLE=$(which python)  ../
-make
-make install
-
-cp -v ${PREFIX}/python/* ${SP_DIR}/
+pip install --no-deps $WHL_FILE

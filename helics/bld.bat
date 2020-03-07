@@ -1,53 +1,17 @@
-mkdir "%SRC_DIR%"\build
-pushd "%SRC_DIR%"\build
-
-git clean -fxd
-
-set PY_VER_NO_DOT=%PY_VER:.=%
-
-where python > tempFile
-set /p HELICS_PYTHON_PREFIX= < tempFile
-del tempFile
-
-python -c "import os, sys; print(os.path.dirname(sys.argv[1]))" %HELICS_PYTHON_PREFIX% > tempFile
-set /p HELICS_PYTHON_PREFIX= < tempFile
-del tempFile
-
-echo "Python location:"
-echo %HELICS_PYTHON_PREFIX%
-
-echo "Setting build options"
-
-if "%PYTHON_VERSION%" == "2.7" (
-    set BUILD_PYTHON=-DBUILD_PYTHON2_INTERFACE=ON
-    set HELICS_PYTHON_LIBRARIES=%HELICS_PYTHON_PREFIX%\Libs
-    set HELICS_PYTHON_EXECUTABLE=%HELICS_PYTHON_PREFIX%\python.exe
-    set HELICS_PYTHON_INCLUDE_DIRS=%HELICS_PYTHON_PREFIX%\include
-) ELSE (
-    set BUILD_PYTHON=-DBUILD_PYTHON_INTERFACE=ON
-    set HELICS_PYTHON_EXECUTABLE=%HELICS_PYTHON_PREFIX%\python.exe
-    set HELICS_PYTHON_INCLUDE_DIRS=%HELICS_PYTHON_PREFIX%\include
-    set HELICS_PYTHON_LIBRARIES=%HELICS_PYTHON_PREFIX%\Libs
+IF "%PY_VER%"=="2.7" (
+	%PYTHON% -m pip install --no-deps https://pypi.org/packages/cp27/h/helics/helics-%PKG_VERSION%-cp27-cp27m-win_amd64.whl
 )
 
-if "%PYTHON_ARCH%" == "32" (
-    set CONDA_FORCE_32BIT=1
-    set HELICS_PLATFORM=-AWin32
-    echo "Building 32 bit"
-) ELSE (
-    set HELICS_PLATFORM=-Ax64
-    echo "Building 64 bit"
+IF "%PY_VER%"=="3.5" (
+	%PYTHON% -m pip install --no-deps https://pypi.org/packages/cp35/h/helics/helics-%PKG_VERSION%-cp35-cp35m-win_amd64.whl
 )
 
+IF "%PY_VER%"=="3.6" (
+	%PYTHON% -m pip install --no-deps https://pypi.org/packages/cp36/h/helics/helics-%PKG_VERSION%-cp36-cp36m-win_amd64.whl
+)
 
-set BUILD_PYTHON=%BUILD_PYTHON% -DPYTHON_EXECUTABLE=%HELICS_PYTHON_EXECUTABLE% -DPYTHON_INCLUDE_DIRS=%HELICS_PYTHON_INCLUDE_DIRS% -DPYTHON_LIBRARIES=%HELICS_PYTHON_LIBRARIES%
+IF "%PY_VER%"=="3.7" (
+	%PYTHON% -m pip install --no-deps https://pypi.org/packages/cp37/h/helics/helics-%PKG_VERSION%-cp37-cp37m-win_amd64.whl
+)
 
-echo %BUILD_PYTHON%
-echo %HELICS_PLATFORM%
-
-cmake -DHELICS_ENABLE_SWIG=ON -DCMAKE_BUILD_TYPE=Release %HELICS_PLATFORM% -DHELICS_BUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% %BUILD_PYTHON% ..
-cmake --build . --config Release --target install
-
-xcopy %LIBRARY_PREFIX%\python\* %SP_DIR%
-
-popd
+if errorlevel 1 exit 1
