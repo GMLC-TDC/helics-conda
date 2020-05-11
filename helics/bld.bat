@@ -14,6 +14,10 @@ IF "%PY_VER%"=="3.7" (
     %PYTHON% -m pip install --no-deps https://pypi.org/packages/cp37/h/helics/helics-%PKG_VERSION%-cp37-cp37m-win_amd64.whl
 )
 
+IF "%PY_VER%"=="3.8" (
+    %PYTHON% -m pip install --no-deps https://pypi.org/packages/cp38/h/helics/helics-%PKG_VERSION%-cp38-cp38-win_amd64.whl
+)
+
 IF "%ARCH%"=="32" (
     %PYTHON% -m pip install --no-deps https://pypi.org/packages/py2.py3/h/helics_apps/helics_apps-%PKG_VERSION%-py2.py3-none-win32.whl
 ) ELSE (
