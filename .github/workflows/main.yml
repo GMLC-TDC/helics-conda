@@ -18,7 +18,7 @@ jobs:
     - uses: goanpeca/setup-miniconda@v1.0.2
       with:
         auto-update-conda: true
-        python-version: 3.8
+        python-version: 3.7
 
     - name: Build and upload conda package
       shell: bash -l {0}
@@ -29,8 +29,8 @@ jobs:
         export CONDA_BLD_PATH
         conda install --yes --quiet conda-build conda-verify
         conda install --yes --quiet anaconda-client
-        conda-build --python=3.8.0a0 .
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.8.0a0 . --output)
+        conda-build --python=3.8 .
+        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.8 . --output)
         conda-build --python=3.7 .
         anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.7 . --output)
         conda-build --python=3.6 .
