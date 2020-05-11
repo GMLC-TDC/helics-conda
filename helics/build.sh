@@ -9,6 +9,8 @@ if [ `uname` == Darwin ]; then
         HELICS_PY_WHL_FILE=https://pypi.org/packages/cp36/h/helics/helics-${PKG_VERSION}-cp36-cp36m-macosx_10_9_intel.whl
     elif [ "$PY_VER" == "3.7" ]; then
         HELICS_PY_WHL_FILE=https://pypi.org/packages/cp37/h/helics/helics-${PKG_VERSION}-cp37-cp37m-macosx_10_9_intel.whl
+    elif [ "$PY_VER" == "3.8" ]; then
+        HELICS_PY_WHL_FILE=https://pypi.org/packages/cp38/h/helics/helics-${PKG_VERSION}-cp38-cp38-macosx_10_9_intel.whl
     fi
     HELICS_APPS_WHL_FILE=https://pypi.org/packages/py2.py3/h/helics_apps/helics_apps-${PKG_VERSION}-py2.py3-none-macosx_10_9_intel.whl
 fi
@@ -22,6 +24,8 @@ if [ `uname` == Linux ]; then
         HELICS_PY_WHL_FILE=https://pypi.org/packages/cp36/h/helics/helics-${PKG_VERSION}-cp36-cp36m-manylinux2010_x86_64.whl
     elif [ "$PY_VER" == "3.7" ]; then
         HELICS_PY_WHL_FILE=https://pypi.org/packages/cp37/h/helics/helics-${PKG_VERSION}-cp37-cp37m-manylinux2010_x86_64.whl
+    elif [ "$PY_VER" == "3.8" ]; then
+        HELICS_PY_WHL_FILE=https://pypi.org/packages/cp38/h/helics/helics-${PKG_VERSION}-cp38-cp38-manylinux2010_x86_64.whl
     fi
     HELICS_APPS_WHL_FILE=https://pypi.org/packages/py2.py3/h/helics_apps/helics_apps-${PKG_VERSION}-py2.py3-none-manylinux2010_x86_64.whl
 fi
