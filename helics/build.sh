@@ -14,12 +14,26 @@ if [ -z "$PREFIX" ]; then
 fi
 echo "Installing helics to ${PREFIX}"
 
-mkdir -p helics/build && cd helics/build
-cmake $CONDA_CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=$FLAGS -DCMAKE_INSTALL_PREFIX=$PREFIX ../
-make -j $CPU_COUNT
-make install
+ls
 
-cd $REPO_DIR/pyhelics
-$PYTHON setup.py install
+mkdir -p $SRC_DIR/helics/build && cd $SRC_DIR/helics/build
+# git submodule update
+# cmake $CONDA_CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=$FLAGS -DCMAKE_INSTALL_PREFIX=$PREFIX ../
+# make -j $CPU_COUNT
+# make install
 
-cp -v ${PREFIX}/* ${SP_DIR}/helics/install
+if [[ $PY3K -eq 1 || $PY3K == True || $PY3K == "True" ]]; then
+    echo "Python 3"
+else
+    echo "Python 2"
+fi
+
+cd $SRC_DIR
+ls
+
+cd $SRC_DIR/pyhelics
+ls
+
+python setup.py install
+
+# cp -v ${PREFIX}/* ${SP_DIR}/helics/install

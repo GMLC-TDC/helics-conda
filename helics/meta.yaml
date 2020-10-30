@@ -9,7 +9,7 @@ build:
   number: 0
 
 source:
-  - url: https://github.com/GMLC-TDC/HELICS-src/archive/v{{ version }}.tar.gz
+  - git_url: https://github.com/GMLC-TDC/HELICS-src
     folder: helics
   - git_url: https://github.com/GMLC-TDC/pyhelics
     folder: pyhelics
@@ -22,9 +22,14 @@ requirements:
     - python
     - pip
     - setuptools
+    - boost-cpp
+    - zeromq # [not win]
+    - cffi
+    - python
   run:
     - python
-    - zeromq
+    - cffi
+    - zeromq # [not win]
 
 test:
   imports:
