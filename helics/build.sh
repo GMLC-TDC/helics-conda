@@ -20,5 +20,6 @@ make -j $CPU_COUNT
 make install
 
 cd $REPO_DIR/pyhelics
-
 $PYTHON setup.py install
+
+cp -v ${PREFIX}/* ${SP_DIR}/helics/install
