@@ -4,9 +4,9 @@ set -e
 set -x
 
 if [ `uname` = "Darwin" ]; then
-	FLAGS="-std=c++14"
+    FLAGS="-std=c++14"
 else
-	FLAGS="-std=c++11"
+    FLAGS="-std=c++11"
 fi
 
 if [ -z "$PREFIX" ]; then
@@ -19,4 +19,6 @@ cmake $CONDA_CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=$FLAGS -DCM
 make -j $CPU_COUNT
 make install
 
-ls
+cd $REPO_DIR/pyhelics
+
+$PYTHON setup.py install
