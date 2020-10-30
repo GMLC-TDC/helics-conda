@@ -28,7 +28,7 @@ requirements:
   run:
     - python
     - cffi
-    - enum34 1.1.8
+    - enum34
     - zeromq # [not win]
 
 test:
