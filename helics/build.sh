@@ -28,11 +28,7 @@ else
     echo "Python 2"
 fi
 
-cd $SRC_DIR
-ls
-
 cd $SRC_DIR/pyhelics
-ls
 
 python setup.py install
 

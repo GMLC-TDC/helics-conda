@@ -24,11 +24,11 @@ requirements:
     - setuptools
     - boost-cpp
     - zeromq # [not win]
-    - cffi
     - python
   run:
     - python
     - cffi
+    - enum34 1.1.8
     - zeromq # [not win]
 
 test:
