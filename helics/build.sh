@@ -1,5 +1,8 @@
 #!/bin/bash -xv
 
+set -o xtrace
+set -o verbose
+
 if [ `uname` = "Darwin" ]; then
     FLAGS="-std=c++14"
 else
@@ -17,9 +20,6 @@ cmake $CONDA_CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=$FLAGS -DCM
 make -j $CPU_COUNT
 make install
 
-set -o xtrace
-set -o verbose
-
 if [[ $PY3K -eq 1 || $PY3K == True || $PY3K == "True" ]]; then
     echo "Python 3"
 else
@@ -29,13 +29,3 @@ fi
 cd $SRC_DIR/pyhelics
 
 python setup.py install --single-version-externally-managed --record=record.txt
-
-ls ${PREFIX}
-ls ${PREFIX}/bin
-ls ${PREFIX}/lib
-
-ls ${SP_DIR}
-ls ${SP_DIR}/helics
-
-mkdir -p ${SP_DIR}/helics/install
-cp -r ${PREFIX}/* ${SP_DIR}/helics/install/
