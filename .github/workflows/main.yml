@@ -33,4 +33,4 @@ jobs:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
         export CONDA_BLD_PATH=$HOME/conda-bld
-        conda-build --output-folder conda-bld --python ${{ matrix.python-version }} conda.recipe
+        conda-build --output-folder conda-bld helics
