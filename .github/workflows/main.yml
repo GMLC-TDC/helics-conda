@@ -18,7 +18,7 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v1
       with:
         auto-update-conda: true
-        python-version: 3.7
+        python-version: 3.8
 
     - name: Install conda packages
       shell: bash -l {0}
@@ -33,4 +33,4 @@ jobs:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
         export CONDA_BLD_PATH=$HOME/conda-bld
-        conda-build --output-folder conda-bld helics
+        conda-build --output-folder conda-bld --python 3.8 helics
