@@ -14,8 +14,6 @@ if [ -z "$PREFIX" ]; then
 fi
 echo "Installing helics to ${PREFIX}"
 
-ls
-
 mkdir -p $SRC_DIR/helics/build && cd $SRC_DIR/helics/build
 git submodule update
 cmake $CONDA_CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=$FLAGS -DCMAKE_INSTALL_PREFIX=$PREFIX ../
@@ -32,4 +30,4 @@ cd $SRC_DIR/pyhelics
 
 python setup.py install
 
-# cp -v ${PREFIX}/* ${SP_DIR}/helics/install
+cp -v ${PREFIX}/* ${SP_DIR}/helics/install
