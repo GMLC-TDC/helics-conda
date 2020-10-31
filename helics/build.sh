@@ -48,4 +48,3 @@ cd $SRC_DIR/pyhelics
 mkdir -p "$SP_DIR/helics/install"
 
 cp -r helics/* $SP_DIR/helics/
-cp -r $PREFIX/* $SP_DIR/helics/install
