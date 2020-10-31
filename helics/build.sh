@@ -26,6 +26,18 @@ else
     echo "Python 2"
 fi
 
+export PYTHON_BIN_PATH=${PYTHON}
+export PYTHON_LIB_PATH=${SP_DIR}
+export USE_DEFAULT_PYTHON_LIB_PATH=1
+
 cd $SRC_DIR/pyhelics
 
 python setup.py install --single-version-externally-managed --record=record.txt
+
+mkdir -p "$SP_DIR/helics"
+
+echo $SP_DIR
+echo $BUILD_PREFIX/lib/python3.8/site-packages/
+
+ls $SP_DIR
+ls $BUILD_PREFIX/lib/python3.8/site-packages/
