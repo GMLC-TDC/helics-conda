@@ -30,5 +30,13 @@ cd $SRC_DIR/pyhelics
 
 python setup.py install --single-version-externally-managed --record=record.txt
 
-mkdir -p ${SP_DIR}/helics/helics/install
-cp -r ${PREFIX}/* ${SP_DIR}/helics/helics/install
+ls ${PREFIX}
+ls ${PREFIX}/bin
+ls ${PREFIX}/lib
+ls ${PREFIX}/install
+
+ls ${SP_DIR}
+ls ${SP_DIR}/helics
+
+mkdir -p ${SP_DIR}/helics/install
+cp -r ${PREFIX}/* ${SP_DIR}/helics/install/
