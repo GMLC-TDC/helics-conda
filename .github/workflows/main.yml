@@ -20,15 +20,17 @@ jobs:
         auto-update-conda: true
         python-version: 3.7
 
-    - name: Build and upload conda package
+    - name: Install conda packages
       shell: bash -l {0}
       env:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
-        conda install --yes --quiet conda-build conda-verify
-        conda install --yes --quiet anaconda-client
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.8 . --output)
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.7 . --output)
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.6 . --output)
-        # conda-build --python=2.7 .
-        # anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=2.7 . --output)
+        conda install --yes --quiet conda-build conda-verify anaconda-client
+
+    - name: Build Conda Python package
+      shell: bash -l {0}
+      env:
+        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run: |
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        conda-build . --output
