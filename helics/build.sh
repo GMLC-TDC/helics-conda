@@ -3,6 +3,19 @@
 set -o xtrace
 set -o verbose
 
+echo "******************* BUILD ENV VARS!!!!!!!!!!!!!!!!!!!!!!!! *******************"
+export CONDA_PREFIX=$PREFIX
+export LIBDIR=$PREFIX/lib
+export INCLUDEDIR=$PREFIX/include
+export LD_LIBRARY_PATH="$LIBDIR:$LD_LIBRARY_PATH"
+
+echo "SITE_PACKAGES: $SP_DIR"
+echo "PREFIX: $PREFIX"
+echo "BUILD_PREFIX: $BUILD_PREFIX"
+echo "CONDA_PREFIX: $CONDA_PREFIX"
+echo "SRC_DIR: $SRC_DIR"
+echo "PYTHON VERSION: $PY_VER"
+
 if [ `uname` = "Darwin" ]; then
     FLAGS="-std=c++14"
 else
