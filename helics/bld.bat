@@ -3,17 +3,6 @@ pushd "%SRC_DIR%"\build
 
 set PY_VER_NO_DOT=%PY_VER:.=%
 
-where python > tempFile
-set /p HELICS_PYTHON_PREFIX= < tempFile
-del tempFile
-
-python -c "import os, sys; print(os.path.dirname(sys.argv[1]))" %HELICS_PYTHON_PREFIX% > tempFile
-set /p HELICS_PYTHON_PREFIX= < tempFile
-del tempFile
-
-echo "Python location:"
-echo %HELICS_PYTHON_PREFIX%
-
 echo "Setting build options"
 
 if "%PYTHON_ARCH%" == "32" (
