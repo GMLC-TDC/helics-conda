@@ -1,4 +1,3 @@
-mkdir "%SRC_DIR%"\helics
 mkdir "%SRC_DIR%"\helics\build
 pushd "%SRC_DIR%"\helics\build
 
