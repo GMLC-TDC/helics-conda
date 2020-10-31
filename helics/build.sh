@@ -28,6 +28,6 @@ fi
 
 cd $SRC_DIR/pyhelics
 
-python setup.py install
+python setup.py install --single-version-externally-managed --record=record.txt
 
 cp -v ${PREFIX}/* ${SP_DIR}/helics/install
