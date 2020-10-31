@@ -25,12 +25,10 @@ requirements:
     - boost-cpp
     - zeromq # [not win]
     - python
-    - enum34
   run:
     - zeromq # [not win]
     - python
     - cffi
-    - enum34
 
 test:
   imports:
