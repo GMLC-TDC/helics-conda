@@ -1,7 +1,4 @@
-#!/bin/bash
-
-set -e
-set -x
+#!/bin/bash -xv
 
 if [ `uname` = "Darwin" ]; then
     FLAGS="-std=c++14"
@@ -19,6 +16,9 @@ git submodule update
 cmake $CONDA_CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=$FLAGS -DCMAKE_INSTALL_PREFIX=$PREFIX ../
 make -j $CPU_COUNT
 make install
+
+set -o xtrace
+set -o verbose
 
 if [[ $PY3K -eq 1 || $PY3K == True || $PY3K == "True" ]]; then
     echo "Python 3"
