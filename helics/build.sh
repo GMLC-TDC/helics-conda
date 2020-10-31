@@ -3,7 +3,7 @@
 set -o xtrace
 set -o verbose
 
-echo "******************* BUILD ENV VARS!!!!!!!!!!!!!!!!!!!!!!!! *******************"
+echo "******************* BUILD ENV VARS! *******************"
 export CONDA_PREFIX=$PREFIX
 export LIBDIR=$PREFIX/lib
 export INCLUDEDIR=$PREFIX/include
