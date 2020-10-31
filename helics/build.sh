@@ -33,7 +33,6 @@ python setup.py install --single-version-externally-managed --record=record.txt
 ls ${PREFIX}
 ls ${PREFIX}/bin
 ls ${PREFIX}/lib
-ls ${PREFIX}/install
 
 ls ${SP_DIR}
 ls ${SP_DIR}/helics
