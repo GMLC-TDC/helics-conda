@@ -31,12 +31,15 @@ requirements:
     - zeromq # [not win]
     - python
     - enum34  # [py27]
+    - vc 9  # [win and py27]
+    - vc 14  # [win and py>=35]
   run:
     - zeromq # [not win]
     - python
     - cffi
     - enum34  # [py27]
-
+    - vc 9  # [win and py27]
+    - vc 14  # [win and py>=35]
 test:
   imports:
     - helics
