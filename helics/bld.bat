@@ -1,5 +1,6 @@
-mkdir "%SRC_DIR%"\build
-pushd "%SRC_DIR%"\build
+mkdir "%SRC_DIR%"\helics
+mkdir "%SRC_DIR%"\helics\build
+pushd "%SRC_DIR%"\helics\build
 
 set PY_VER_NO_DOT=%PY_VER:.=%
 
@@ -14,12 +15,18 @@ if "%PYTHON_ARCH%" == "32" (
     echo "Building 64 bit"
 )
 
-
 echo %HELICS_PLATFORM%
 
-cmake -DCMAKE_BUILD_TYPE=Release -DHELICS_BUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ..
+mkdir "%SP_DIR%"\helics
+mkdir "%SP_DIR%"\helics\install
+
+cmake -DCMAKE_BUILD_TYPE=Release -DHELICS_BUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% -DCMAKE_INSTALL_PREFIX=%SP_DIR%\helics\install ..
 cmake --build . --config Release --target install
 
-xcopy %LIBRARY_PREFIX%\python\* %SP_DIR%
+popd
+
+pushd "%SRC_DIR%"\pyhelics\
+
+xcopy helics\* %SP_DIR%\helics\
 
 popd
