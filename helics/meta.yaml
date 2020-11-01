@@ -44,8 +44,8 @@ requirements:
     - vc 14  # [win and py>=35]
 
 test:
-  imports:
-    - helics # [not win]
+  commands:
+    - python -c "import helics" # [not win or not py27]
 
 about:
   home: "https://github.com/GMLC-TDC/HELICS"
