@@ -31,7 +31,6 @@ requirements:
     - zeromq # [not win]
     - python {{python}}
     - enum34  # [py27]
-    - strip-hints  # [py27]
     - vc 9  # [win and py27]
     - vc 14  # [win and py>=35]
   host:
@@ -46,19 +45,19 @@ requirements:
     - zeromq # [not win]
     - python {{python}}
     - enum34  # [py27]
-    - strip-hints  # [py27]
     - vc 9  # [win and py27]
     - vc 14  # [win and py>=35]
   run:
     - zeromq # [not win]
     - python {{python}}
     - cffi
+    - strip-hints
     - enum34  # [py27]
     - vc 9  # [win and py27]
     - vc 14  # [win and py>=35]
 test:
   imports:
-    - helics # [not win]
+    - helics # [not win or not py27]
 
 about:
   home: "https://github.com/GMLC-TDC/HELICS"

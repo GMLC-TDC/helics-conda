@@ -28,10 +28,6 @@ popd
 
 pushd "%SRC_DIR%"\pyhelics\
 
-IF "%PY_VER%"=="2.7" (
-    strip-hints helics\capi.py > helics\capi.py
-)
-
 xcopy helics\* %SP_DIR%\helics\
 
 popd
