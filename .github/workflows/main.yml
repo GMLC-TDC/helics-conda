@@ -33,4 +33,28 @@ jobs:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
         export CONDA_BLD_PATH=$HOME/conda-bld
-        conda-build --output-folder conda-bld --python 3.8 helics
+        conda-build --python 3.8 helics --output
+
+    - name: Build Conda Python package
+      shell: bash -l {0}
+      env:
+        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run: |
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        conda-build --python 3.7 helics --output
+
+    - name: Build Conda Python package
+      shell: bash -l {0}
+      env:
+        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run: |
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        conda-build --python 3.6 helics --output
+
+    - name: Build Conda Python package
+      shell: bash -l {0}
+      env:
+        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run: |
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        conda-build --python 2.7 helics --output
