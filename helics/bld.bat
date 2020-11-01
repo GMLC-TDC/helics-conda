@@ -1,5 +1,3 @@
-python -m pip install strip-hints
-
 mkdir "%SRC_DIR%"\helics\build
 pushd "%SRC_DIR%"\helics\build
 
@@ -25,6 +23,12 @@ popd
 pushd "%SRC_DIR%"\pyhelics\
 
 xcopy helics\* %SP_DIR%\helics\
+
+popd
+
+pushd "%SRC_DIR%"\strip_hints\
+
+xcopy strip_hints\* %SP_DIR%\strip_hints\
 
 popd
 
