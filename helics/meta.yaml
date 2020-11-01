@@ -8,9 +8,9 @@ package:
 build:
   number: 0
   features:
-    - vc9  # [win and py27]
-    - vc10 # [win and py34]
-    - vc14 # [win and py>=35]
+    - vc9  [win and py27]
+    - vc10 [win and py34]
+    - vc14 [win and py>=35]
 
 source:
   - git_url: https://github.com/GMLC-TDC/HELICS-src
@@ -30,22 +30,22 @@ requirements:
     - pip
     - setuptools
     - boost-cpp
-    - zeromq # [not win]
+    - zeromq [not win]
     - python {{python}}
-    - enum34  # [py27]
-    - vc 9  # [win and py27]
-    - vc 14  # [win and py>=35]
+    - enum34 [py27]
+    - vc 9  [win and py27]
+    - vc 14  [win and py>=35]
   run:
-    - zeromq # [not win]
+    - zeromq [not win]
     - python {{python}}
     - cffi
-    - enum34  # [py27]
-    - vc 9  # [win and py27]
-    - vc 14  # [win and py>=35]
+    - enum34 [py27]
+    - vc 9  [win and py27]
+    - vc 14 [win and py>=35]
 
 test:
   commands:
-    - python -c "import helics" # [not win or not py27]
+    - python -c "import helics" [not win or not py27]
 
 about:
   home: "https://github.com/GMLC-TDC/HELICS"
