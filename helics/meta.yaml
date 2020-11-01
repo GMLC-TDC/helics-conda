@@ -45,7 +45,7 @@ requirements:
 
 test:
   commands:
-    - python -c "import helics" [not win or not py27]
+    - python -c "import helics" [not win]
 
 about:
   home: "https://github.com/GMLC-TDC/HELICS"
