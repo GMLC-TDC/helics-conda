@@ -42,7 +42,7 @@ requirements:
     - vc 14  # [win and py>=35]
 test:
   imports:
-    - helics
+    - helics # [not win]
 
 about:
   home: "https://github.com/GMLC-TDC/HELICS"
