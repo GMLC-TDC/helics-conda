@@ -26,6 +26,14 @@ cd $SRC_DIR/pyhelics
 
 mkdir -p "$SP_DIR/helics/install"
 
+if [ "$PY_VER" == "2.7" ]; then
+
+    strip-hints helics/capi.py > _tmp.py
+    rm helics/capi.py
+    mv _tmp.py helics/capi.py
+
+fi
+
 cp -r helics/* $SP_DIR/helics/
 
 echo "******************* Installing HELICS ***************"
