@@ -22,16 +22,26 @@ jobs:
 
     - name: Install conda packages
       shell: bash -l {0}
-      env:
-        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
         conda install --yes --quiet conda-build conda-verify anaconda-client
 
     - name: Build Conda Python package
       shell: bash -l {0}
-      env:
-        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
         export CONDA_BLD_PATH=$HOME/conda-bld
         conda-build --python=${{ matrix.python_version }} helics
-        # anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=${{ matrix.python_version }} helics --output)
+
+    - name: Conda package path
+      shell: bash -l {0}
+      run: |
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        conda-build --python=${{ matrix.python_version }} helics --output
+
+    - name: Conda upload
+      if: startsWith(github.ref, 'refs/tags/')
+      shell: bash -l {0}
+      env:
+        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run: 
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=${{ matrix.python_version }} helics --output)
