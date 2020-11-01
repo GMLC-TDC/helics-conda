@@ -23,7 +23,7 @@ cd $SRC_DIR/strip_hints
 
 mkdir -p "$SP_DIR/strip_hints/"
 
-cp -r strip_hints/* $SP_DIR/strip_hints/
+cp -r src/strip_hints/* $SP_DIR/strip_hints/
 
 echo "******************* Installing PyHELICS ***************"
 

@@ -28,7 +28,7 @@ popd
 
 pushd "%SRC_DIR%"\strip_hints\
 
-xcopy strip_hints\* %SP_DIR%\strip_hints\
+xcopy src\strip_hints\* %SP_DIR%\strip_hints\
 
 popd
 
