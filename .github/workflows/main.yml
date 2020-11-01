@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    name: Conda (${{ matrix.os }} - ${{ matrix.python_version }})
+    name: Conda (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
