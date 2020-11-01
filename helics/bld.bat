@@ -10,7 +10,8 @@ if "%PYTHON_ARCH%" == "32" (
     set HELICS_PLATFORM=-AWin32
     echo "Building 32 bit"
 ) ELSE (
-    set HELICS_PLATFORM=-Ax64
+    set HELICS_PLATFORM=""
+    :: -Ax64
     echo "Building 64 bit"
 )
 
