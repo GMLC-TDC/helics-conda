@@ -14,8 +14,10 @@ if "%VisualStudioVersion%" == "" (
 )
 
 set VS90COMNTOOLS=%VS140COMNTOOLS%
+set CC=gcc
+set CXX=g++
 
-cmake -G"NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DHELICS_BUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% -DCMAKE_INSTALL_PREFIX=%SP_DIR%\helics\install ..
+cmake -G"MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DHELICS_BUILD_TESTS=OFF -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% -DCMAKE_INSTALL_PREFIX=%SP_DIR%\helics\install ..
 cmake --build . --config Release --target install
 
 if errorlevel 1 exit /b 1
