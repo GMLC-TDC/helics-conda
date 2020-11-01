@@ -33,6 +33,20 @@ requirements:
     - enum34  # [py27]
     - vc 9  # [win and py27]
     - vc 14  # [win and py>=35]
+  host:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - ninja
+    - cmake >=3.4.0
+    - python
+    - pip
+    - setuptools
+    - boost-cpp
+    - zeromq # [not win]
+    - python
+    - enum34  # [py27]
+    - vc 9  # [win and py27]
+    - vc 14  # [win and py>=35]
   run:
     - zeromq # [not win]
     - python
