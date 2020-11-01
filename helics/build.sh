@@ -3,6 +3,8 @@
 set -o xtrace
 set -o verbose
 
+python -m pip install strip-hints
+
 echo "******************* BUILD ENV VARS! *******************"
 export CONDA_PREFIX=$PREFIX
 export LIBDIR=$PREFIX/lib
