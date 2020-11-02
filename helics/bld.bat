@@ -28,10 +28,4 @@ xcopy helics\* %SP_DIR%\helics\
 
 popd
 
-pushd "%SRC_DIR%"\strip_hints\
-
-xcopy src\strip_hints\* %SP_DIR%\strip_hints\
-
-popd
-
 exit 0

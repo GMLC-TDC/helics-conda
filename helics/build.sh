@@ -16,15 +16,6 @@ echo "CONDA_PREFIX: $CONDA_PREFIX"
 echo "SRC_DIR: $SRC_DIR"
 echo "PYTHON VERSION: $PY_VER"
 
-
-echo "******************* Installing Strip Hints ***************"
-
-cd $SRC_DIR/strip_hints
-
-mkdir -p "$SP_DIR/strip_hints/"
-
-cp -r src/strip_hints/* $SP_DIR/strip_hints/
-
 echo "******************* Installing PyHELICS ***************"
 
 export PYTHON_BIN_PATH=${PYTHON}

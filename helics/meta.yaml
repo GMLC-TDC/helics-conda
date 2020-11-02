@@ -17,8 +17,6 @@ source:
     folder: helics
   - git_url: https://github.com/GMLC-TDC/pyhelics
     folder: pyhelics
-  - git_url: https://github.com/abarker/strip-hints
-    folder: strip_hints
 
 requirements:
   build:
