@@ -32,8 +32,6 @@ requirements:
     - pip
     - setuptools
     - enum34 [py27]
-    - vc 9  [win and py27]
-    - vc 14  [win and py>=35]
   run:
     - zeromq [not win]
     - python {{ python }}
