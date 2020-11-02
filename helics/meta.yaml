@@ -39,8 +39,6 @@ requirements:
     - python {{ python }}
     - cffi
     - enum34 [py27]
-    - vc 9  [win and py27]
-    - vc 14 [win and py>=35]
 
 about:
   home: "https://github.com/GMLC-TDC/HELICS"
