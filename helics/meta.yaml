@@ -11,12 +11,12 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script:
+    - "{{ PYTHON }} setup.py download"
+    - "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     - cffi >=1.0.0
     - pip
     - python
