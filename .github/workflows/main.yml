@@ -14,8 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: conda-incubator/setup-miniconda@v1
+    - uses: conda-incubator/setup-miniconda@v2
       with:
+        auto-activate-base: true
         auto-update-conda: true
         python-version: 3.8
 
@@ -41,6 +42,6 @@ jobs:
       shell: bash -l {0}
       env:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
-      run: 
+      run:
         export CONDA_BLD_PATH=$HOME/conda-bld
         anaconda -t $BINSTAR_TOKEN upload $(conda-build helics --output)
