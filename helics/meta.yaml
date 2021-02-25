@@ -20,12 +20,10 @@ requirements:
     - pip
     - python
     - zeromq
-    - strip-hints
   run:
     - cffi >=1.0.0
     - python
     - zeromq
-    - strip-hints
 
 test:
   imports:
