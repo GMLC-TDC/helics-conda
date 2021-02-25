@@ -14,14 +14,17 @@ build:
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
-  host:
+  build:
+    - {{ compiler('c') }}
     - cffi >=1.0.0
     - pip
     - python
+    - zeromq
     - strip-hints
   run:
     - cffi >=1.0.0
     - python
+    - zeromq
     - strip-hints
 
 test:
