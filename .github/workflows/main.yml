@@ -28,23 +28,9 @@ jobs:
 
     - name: Build Conda Python package
       shell: bash -l {0}
-      run: |
-        export CONDA_BLD_PATH=$HOME/conda-bld
-        conda-build helics
-
-    - name: Conda package path
-      shell: bash -l {0}
-      run: |
-        export CONDA_BLD_PATH=$HOME/conda-bld
-        conda-build helics --output
-
-    - name: Conda upload
-      # if: startsWith(github.ref, 'refs/tags/')
-      shell: bash -l {0}
       env:
-        BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
-      run:
+        ANACONDA_API_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run: |
         export CONDA_BLD_PATH=$HOME/conda-bld
-        anaconda login --username gmlc-tdc --password "$BINSTAR_TOKEN"
-        anaconda -v upload $(conda-build helics --output)
-        anaconda logout
+        conda config --set anaconda_upload yes
+        conda-build helics
