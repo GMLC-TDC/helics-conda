@@ -39,6 +39,6 @@ jobs:
       shell: bash -l {0}
       env:
         ANACONDA_API_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
-      run:
+      run: |
         export CONDA_BLD_PATH=$HOME/conda-bld
-        anaconda upload $(conda-build helics --output)
+        anaconda upload
