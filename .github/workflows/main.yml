@@ -31,7 +31,6 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
-        export CONDA_BLD_PATH=$HOME/conda-bld
         conda config --set anaconda_upload yes
         conda-build helics
     - name: Conda upload
@@ -40,5 +39,4 @@ jobs:
       env:
         ANACONDA_API_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
-        export CONDA_BLD_PATH=$HOME/conda-bld
         anaconda -v upload -c gmlc-tdc $(conda-build helics --output)
