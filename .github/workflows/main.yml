@@ -41,5 +41,4 @@ jobs:
         ANACONDA_API_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
       run: |
         export CONDA_BLD_PATH=$HOME/conda-bld
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build helics --output)
-        anaconda -t $ANACONDA_API_TOKEN upload $(conda-build helics --output)
+        anaconda upload $(conda-build helics --output)
