@@ -1,32 +1,44 @@
 {% set name = "helics" %}
-{% set version = "2.6.1" %}
+{% set version = "2.6.1.post5" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 71d052cf1030a5548073ddf87235558ee7bb1ed286cb3a4bcfd144668acf72af
+
 build:
   number: 0
+  string: py3
+  script:
+    - "{{ PYTHON }} setup.py download"
+    - "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   build:
-    - python
+    - cffi >=1.0.0
     - pip
-  run:
     - python
+    - zeromq
+  run:
+    - cffi >=1.0.0
+    - python
+    - zeromq
 
 test:
   imports:
     - helics
 
 about:
-  home: "https://github.com/GMLC-TDC/HELICS"
-  license: BSD
-  license_family: BSD
+  home: "https://github.com/GMLC-TDC/pyhelics"
+  license: MIT
+  license_family: MIT
   license_file:
-  summary: "Hierarchical Engine for Large-scale Infrastructure Co-Simulation (HELICS)"
-  doc_url: https://helics.readthedocs.io/en/latest/
-  dev_url: https://github.com/GMLC-TDC/HELICS
+  summary: "Python HELICS bindings"
+  doc_url: "https://python.helics.org/"
+  dev_url: "https://python.helics.org/"
 
 extra:
   recipe-maintainers:

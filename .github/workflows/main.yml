@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     name: Conda (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -15,25 +14,34 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: goanpeca/setup-miniconda@v1.0.2
+    - uses: conda-incubator/setup-miniconda@v2
       with:
+        auto-activate-base: true
         auto-update-conda: true
-        python-version: 3.7
+        python-version: 3.8
 
-    - name: Build and upload conda package
+    - name: Install conda packages
+      shell: bash -l {0}
+      run: |
+        conda install --yes --quiet conda-build conda-verify anaconda-client
+
+    - name: Build Conda Python package
+      shell: bash -l {0}
+      run: |
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        conda-build helics
+
+    - name: Conda package path
+      shell: bash -l {0}
+      run: |
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        conda-build helics --output
+
+    - name: Conda upload
+      if: startsWith(github.ref, 'refs/tags/')
       shell: bash -l {0}
       env:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
-      run: |
-        CONDA_BLD_PATH=$HOME/conda-bld
-        export CONDA_BLD_PATH
-        conda install --yes --quiet conda-build conda-verify
-        conda install --yes --quiet anaconda-client
-        conda-build --python=3.8 .
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.8 . --output)
-        conda-build --python=3.7 .
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.7 . --output)
-        conda-build --python=3.6 .
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=3.6 . --output)
-        conda-build --python=2.7 .
-        anaconda -t $BINSTAR_TOKEN upload $(conda-build --python=2.7 . --output)
+      run:
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        anaconda -t $BINSTAR_TOKEN upload $(conda-build helics --output)
