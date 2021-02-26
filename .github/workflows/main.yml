@@ -34,3 +34,11 @@ jobs:
         export CONDA_BLD_PATH=$HOME/conda-bld
         conda config --set anaconda_upload yes
         conda-build helics
+    - name: Conda upload
+      # if: startsWith(github.ref, 'refs/tags/')
+      shell: bash -l {0}
+      env:
+        ANACONDA_API_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
+      run:
+        export CONDA_BLD_PATH=$HOME/conda-bld
+        anaconda upload $(conda-build helics --output)
