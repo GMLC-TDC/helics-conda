@@ -1,5 +1,5 @@
 {% set name = "helics" %}
-{% set version = "2.6.1.post6" %}
+{% set version = "2.6.1.post11" %}
 
 package:
   name: "{{ name|lower }}"
