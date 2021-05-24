@@ -1,5 +1,5 @@
 {% set name = "helics" %}
-{% set version = "2.7.0.post0" %}
+{% set version = "2.7.0.post5" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 153ec109eebe6a6ac522eeba4711df1810c50c978a21e6f2b050f0697310ebad
+  sha256: 1c7dd27930df37667d63e4bddb2e01bbc9284be39b4e257c10fdce1553cd3a56
 
 build:
   number: 0
