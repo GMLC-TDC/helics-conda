@@ -1,5 +1,5 @@
 {% set name = "helics" %}
-{% set version = "2.7.0.post5" %}
+{% set version = "3.1.0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 1c7dd27930df37667d63e4bddb2e01bbc9284be39b4e257c10fdce1553cd3a56
+  sha256: 62f9ba78681db642796bd13992b804584ab526d616ea4dcb4a18a1136755041e
 
 build:
   number: 0
@@ -17,12 +17,12 @@ build:
 
 requirements:
   build:
-    - cffi >=1.0.0
+    - cffi >=1.6.0
     - pip
     - python
     - zeromq
   run:
-    - cffi >=1.0.0
+    - cffi >=1.6.0
     - python
     - zeromq
 
@@ -34,7 +34,7 @@ about:
   home: "https://github.com/GMLC-TDC/pyhelics"
   license: MIT
   license_family: MIT
-  license_file:
+  license_file: LICENSE
   summary: "Python HELICS bindings"
   doc_url: "https://python.helics.org/"
   dev_url: "https://python.helics.org/"
