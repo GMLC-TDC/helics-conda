@@ -7,11 +7,12 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 62f9ba78681db642796bd13992b804584ab526d616ea4dcb4a18a1136755041e
+  sha256: 1bda3415c6c47c76be92854c1a5e18953954e2d7e4f545e1b621a1727b13258
 
 build:
   number: 0
   script:
+    - "{{ PYTHON }} scripts/download-ziptools"
     - "{{ PYTHON }} setup.py download"
     - "{{ PYTHON }} -m pip install . -vv"
 
