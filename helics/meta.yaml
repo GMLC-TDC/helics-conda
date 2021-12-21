@@ -1,5 +1,5 @@
 {% set name = "helics" %}
-{% set version = "3.1.1" %}
+{% set version = "3.1.1.post0" %}
 
 package:
   name: "{{ name|lower }}"
@@ -12,7 +12,6 @@ source:
 build:
   number: 0
   script:
-    - "{{ PYTHON }} scripts/download-ziptools.py"
     - "{{ PYTHON }} setup.py download"
     - "{{ PYTHON }} -m pip install . -vv"
 
