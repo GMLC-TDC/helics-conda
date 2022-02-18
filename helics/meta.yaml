@@ -1,5 +1,5 @@
 {% set name = "helics" %}
-{% set version = "3.1.1.post0" %}
+{% set version = "3.1.2.post1" %}
 
 package:
   name: "{{ name|lower }}"
@@ -7,7 +7,7 @@ package:
 
 source:
   url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 62ca985c5c777abae22e35b6664b664f4c4e82ffe69a707e2f48f552c02b3f10
+  sha256: b40824c2ffd69a1cc2d3b34f75b2beabf04e44e453835040e86a7ebec6f27eb5
 
 build:
   number: 0
@@ -29,6 +29,12 @@ requirements:
 test:
   imports:
     - helics
+commands:
+  - helics_app --help
+  - helics_broker --help
+  - helics_broker_server --help
+  - helics_player --help
+  - helics_recorder --help
 
 about:
   home: "https://github.com/GMLC-TDC/pyhelics"
